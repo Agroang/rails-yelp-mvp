@@ -1,0 +1,15 @@
+ <div class="container">
+  <h1 class="m-2">List of Restaurants</h1>
+  <div class="cards">
+    <% @restaurants.each do |restaurant| %>
+      <div class="card-product">
+        <img src=<%= "http://source.unsplash.com/featured/?#{restaurant.category}&#{rand(1000)}" %> />
+        <div class="card-product-infos">
+          <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
+          <p>Restaurant category: <strong><%= restaurant.category.capitalize %></strong></p>
+          <p><%= restaurant.address %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="cards">
+  <div class="card" style="width: 25rem;">
+    <div class="container">
+      <img class="mw-100 mh-50" src=<%= "http://source.unsplash.com/featured/?#{@restaurant.category}&#{rand(1000)}" %> />
+      <h1><%= @restaurant.name %></h1>
+      <h2><%= @restaurant.category.capitalize %></h2>
+      <p><%= @restaurant.address %></p>
+    </div>
+  </div>
+  <div class="card p-4" style="width: 25rem;">
+    <div class="container h1 text-center">
+      <%= link_to "Add your review!", new_restaurant_review_path(@restaurant) %>
+    </div>
+    <br>
+    <br>
+    <div class="container h2 text-center">
+      <%= link_to "Back to the list of Restaurants", restaurants_path %>
+    </div>
+  </div>
+  <div class="card p-4" style="width: 25rem;">
+      <% @restaurant.reviews.each do |restaurant| %>
+        <p><%= restaurant.content %></p>
+        <p class="m-0 ms-2" style="font-size: 0.8em">
+        <% restaurant.rating.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <% (5 - restaurant.rating).times do %>
+          <i class="far fa-star"></i>
+        <% end %>
+      </p>
+      <% end %>
+  </div>
+</div>
